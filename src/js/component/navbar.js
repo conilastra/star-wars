@@ -7,11 +7,24 @@ export class Navbar extends React.Component {
 			<nav className="navbar navbar-light bg-light mb-3">
 				<div className="container">
 					<Link to="/">
-						<span className="navbar-brand mb-0 h1">Starwars</span>
+						<img
+							height="70"
+							src="https://icon-library.net/images/star-wars-icon-png/star-wars-icon-png-8.jpg"
+						/>
 					</Link>
 					<div className="ml-auto">
 						<Link to="/demo">
-							<button className="btn btn-primary">Favorites</button>
+							<div className="btn-group">
+								<button
+									type="button"
+									className="btn btn-primary dropdown-toggle"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false">
+									Favorites
+								</button>
+								<div className="dropdown-menu">Hello :)</div>
+							</div>
 						</Link>
 					</div>
 				</div>
