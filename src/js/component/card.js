@@ -3,17 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Consumer } from "../store/appContext";
 
-export class Card extends React.Component {
-	state = {
-		fav: false
-	};
-
-	saveFav = () => {
-		this.setState({
-			fav: !this.state.fav
-		});
-	};
-
+export class CharacterCard extends React.Component {
 	render() {
 		return (
 			<div className="card col-7 col-md-4 col-lg-3 p-0 mx-3">
@@ -27,12 +17,18 @@ export class Card extends React.Component {
 						<button className="btn btn-outline-primary">Learn more!</button>
 					</Link>
 					<Consumer>
-						{({ state, actions }) => {
+						{({ store, actions }) => {
 							return (
 								<button
 									className="btn btn-outline-warning float-right"
 									onClick={() => actions.handleFav(this.props.character)}>
-									<i className={this.state.fav ? "fas fa-heart" : "far fa-heart"} />
+									<i
+										className={
+											store.favs.filter(i => i.name === this.props.character.name).length === 0
+												? "far fa-heart"
+												: "fas fa-heart"
+										}
+									/>
 								</button>
 							);
 						}}
@@ -43,7 +39,7 @@ export class Card extends React.Component {
 	}
 }
 
-Card.propTypes = {
+CharacterCard.propTypes = {
 	character: PropTypes.object,
 	name: PropTypes.string,
 	gender: PropTypes.string,
