@@ -13,14 +13,8 @@ export class CardHolder extends React.Component {
 				<div className="row flex-row flex-nowrap overflow-auto">
 					<Consumer>
 						{({ store }) => {
-							return store["characters"].map(item => (
-								<Card
-									name={item.name}
-									gender={item.gender}
-									hair={item.hair}
-									eyes={item.eyes}
-									key={item.name}
-								/>
+							return store["characters"].map((character, i) => (
+								<Card character={character} id={i} key={i} />
 							));
 						}}
 					</Consumer>
@@ -31,9 +25,5 @@ export class CardHolder extends React.Component {
 }
 
 CardHolder.propTypes = {
-	title: PropTypes.string,
-	name: PropTypes.string,
-	gender: PropTypes.string,
-	eyes: PropTypes.string,
-	hair: PropTypes.string
+	title: PropTypes.string
 };

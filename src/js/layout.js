@@ -25,7 +25,7 @@ export const Layout = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Detail} />
-						<Route path="/single/:theid" component={Single} />
+						<Route path="/single/:theid" component={Detail} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />

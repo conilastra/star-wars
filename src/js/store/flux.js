@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			favs: [],
 			characters: [
 				{
 					name: "Luke Skywalker",
@@ -168,6 +169,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			// Use getActions to call a function within a fuction
+			handleFav: ch => {
+				let selected = { name: ch.name };
+				const store = getStore();
+				console.log(store.favs);
+
+				if (store.favs.filter(i => i.name === selected.name).length !== 0)
+					return setStore({ favs: store.favs.filter(i => i.name !== selected.name) });
+
+				return setStore({ favs: [...store.favs, selected] });
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
