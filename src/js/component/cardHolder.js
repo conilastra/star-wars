@@ -5,8 +5,6 @@ import { Consumer } from "../store/appContext";
 
 export class CharacterCardHolder extends React.Component {
 	render() {
-		const { title } = this.props;
-
 		return (
 			<section className="container py-2 mb-5 vw-100">
 				<h2 className="text-danger py-3">Characters</h2>
@@ -14,7 +12,7 @@ export class CharacterCardHolder extends React.Component {
 					<Consumer>
 						{({ store }) => {
 							return store["characters"].map((character, i) => (
-								<CharacterCard character={character} id={i + 1} key={i} />
+								<CharacterCard character={character} id={i + 1} key={i + 1} />
 							));
 						}}
 					</Consumer>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Consumer } from "../store/appContext";
+import PropTypes from "prop-types";
 
 import "../../styles/demo.scss";
 
-export const Detail = () => {
+export const Detail = props => {
 	return (
 		<Consumer>
 			{({ store }) => {
@@ -12,7 +13,7 @@ export const Detail = () => {
 						<article className="row">
 							<img className="col-6 px-0" src="https://via.placeholder.com/800x600" />
 							<div className="col-6 text-center">
-								<h2 className="py-2">{store.details[0].name}</h2>
+								<h2 className="py-2">{props.match.params.id}</h2>
 								<p>
 									The FIRST ORDER reigns. Having decimated the peaceful Republic, Supreme Leader Snoke
 									now deploys his merciless legions to seize military control of the galaxy. Only
@@ -37,4 +38,8 @@ export const Detail = () => {
 			}}
 		</Consumer>
 	);
+};
+
+Detail.propTypes = {
+	match: PropTypes.object
 };

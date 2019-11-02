@@ -5,14 +5,16 @@ import { Consumer } from "../store/appContext";
 
 export class CharacterCard extends React.Component {
 	render() {
+		const { character } = this.props;
+
 		return (
 			<div className="card col-7 col-md-4 col-lg-3 p-0 mx-3">
 				<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
 				<div className="card-body">
-					<h5 className="card-title">{this.props.character.name}</h5>
-					<p className="card-text my-0">Gender: {this.props.character.gender} </p>
-					<p className="card-text my-0">Hair color: {this.props.character.hair_color} </p>
-					<p className="card-text pb-3">Eye-color: {this.props.character.eye_color}</p>
+					<h5 className="card-title">{character.name}</h5>
+					<p className="card-text my-0">Gender: {character.gender} </p>
+					<p className="card-text my-0">Hair color: {character.hair_color} </p>
+					<p className="card-text pb-3">Eye-color: {character.eye_color}</p>
 					<Link to={`/single/${this.props.id}`}>
 						<button className="btn btn-outline-primary">Learn more!</button>
 					</Link>
@@ -21,10 +23,10 @@ export class CharacterCard extends React.Component {
 							return (
 								<button
 									className="btn btn-outline-warning float-right"
-									onClick={() => actions.handleFav(this.props.character)}>
+									onClick={() => actions.handleFav(character)}>
 									<i
 										className={
-											store.favs.filter(i => i.name === this.props.character.name).length === 0
+											store.favs.filter(i => i.name === character.name).length === 0
 												? "far fa-heart"
 												: "fas fa-heart"
 										}
