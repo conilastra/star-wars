@@ -11,7 +11,7 @@ export class CharacterCardHolder extends React.Component {
 				<div className="row flex-row flex-nowrap overflow-auto">
 					<Consumer>
 						{({ store }) => {
-							return store["characters"].map((character, i) => (
+							return this.props.data.map((character, i) => (
 								<CharacterCard character={character} id={i + 1} key={i + 1} />
 							));
 						}}
@@ -23,5 +23,6 @@ export class CharacterCardHolder extends React.Component {
 }
 
 CharacterCardHolder.propTypes = {
-	title: PropTypes.string
+	title: PropTypes.string,
+	data: PropTypes.array
 };
